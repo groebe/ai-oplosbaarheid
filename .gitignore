@@ -1,0 +1,9 @@
+# Jupyter & Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Besturingssysteem & Tijdelijke bestanden
+.DS_Store
+*.log
+.env
