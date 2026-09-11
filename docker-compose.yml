@@ -1,0 +1,21 @@
+services:
+  ai-server:
+    build: .
+    image: john-ai-deepchem:v1
+    container_name: john-ai-server
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    volumes:
+      - .:/app
+    ports:
+      - "8888:8888"
+    shm_size: '2gb' # Cruciaal voor stabiliteit tijdens AI-training
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
